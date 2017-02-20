@@ -12691,6 +12691,10 @@ var _dailyComponent = __webpack_require__(125);
 
 var _dailyComponent2 = _interopRequireDefault(_dailyComponent);
 
+var _notFoundComponent = __webpack_require__(389);
+
+var _notFoundComponent2 = _interopRequireDefault(_notFoundComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12724,7 +12728,8 @@ var App = function (_React$Component) {
 						_reactRouter.Router,
 						{ history: _reactRouter.hashHistory },
 						_react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _dashboardComponent2.default }),
-						_react2.default.createElement(_reactRouter.Route, { path: 'daily/:day', component: _dailyComponent2.default })
+						_react2.default.createElement(_reactRouter.Route, { path: 'daily/:day', component: _dailyComponent2.default }),
+						_react2.default.createElement(_reactRouter.Route, { path: '*', component: _notFoundComponent2.default })
 					)
 				)
 			);
@@ -74142,6 +74147,32 @@ webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 388;
 
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = NotFound;
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styles = __webpack_require__(130);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NotFound() {
+	window.location.hash = '#/dashboard';
+	return null;
+}
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
