@@ -52,7 +52,7 @@ export default class ActivityStats extends React.Component {
 		)
 	}
 	interact(id, type) {
-		console.log('sent network request with id and type to take actual action');
+		console.info('sent network request with id and type to take actual action');
 		this.setState({
 			[type]: true,
 		})

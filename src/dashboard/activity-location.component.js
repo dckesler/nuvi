@@ -56,13 +56,13 @@ export default class ActivityLocation extends React.Component {
 	showContent() {
 		if (this.state.error)
 			return (
-				<div className={`${styles.error}`}>
+				<div className={`${css(styles.error)}`}>
 					Unable to display location for this activity.
 				</div>
 			)
 		if (this.state.location) {
 			return (
-				<div className={`${styles.locationText}`}>
+				<div className={`${css(styles.locationText)}`}>
 					{this.state.location.state}, {this.state.location.country}
 				</div>
 			)
@@ -73,7 +73,7 @@ export default class ActivityLocation extends React.Component {
 	}
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
 	location: {
 		position: 'relative',
 	},

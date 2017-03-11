@@ -1,15 +1,12 @@
 import { Observable } from 'rx';
+import axios from 'axios';
 
 const streams = {
 	activities: null,
 };
 
-export function getStream(stream) {
-	return streams[stream];
-}
-
 export function activitiesStream() {
-	streams.activities = Observable.create(observer => {
+	return Observable.create(observer => {
 		getActivities().subscribe(response => {
 			observer.onNext(response);
 			setInterval(() => {
@@ -17,27 +14,13 @@ export function activitiesStream() {
 					observer.onNext(response);
 				});
 			}, 60000);
+		}, error => {
+			throw new Error(error);
 		});
 	});
 }
 
 export function getActivities() {
-	return Observable
-		.create(observer => {
-			const options = {
-				method: 'GET',
-			};
-			fetch(`https://nuvi-challenge.herokuapp.com/activities`, options)
-				.then(response => {
-					if (response.ok) {
-						response.json()
-							.then(json => {
-								observer.onNext(json);
-								observer.onCompleted();
-							})
-					} else {
-						observer.onError(response.statusText);
-					}
-				})
-		})	
+	return Observable.fromPromise(axios.get(`https://nuvi-challenge.herokuapp.com/activities`))
+		.map(response => response.data)
 }

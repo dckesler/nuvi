@@ -1,9 +1,15 @@
 {
-	"coveragePathIgnorePatterns": ["<rootDir>/jspm_packages/", "<rootDir>/node_modules"],
+	"coveragePathIgnorePatterns": ["<rootDir>/node_modules"],
 	"collectCoverageFrom": ["<rootDir>/src/**/*.js"],
 	"transform": {
 		".*": "./node_modules/babel-jest"
 	},
-	"testRegex": "<rootDir>/src/.*\\.test\\.js$",
-	"rootDir": "./"
+	"testRegex": "<rootDir>/src/.*\\.spec\\.js$",
+	"rootDir": "./",
+	"modulePaths": ["./"],
+	"moduleNameMapper": {
+		"^styles$": "<rootDir>/src/styles/styles.js",
+		"axios": "<rootDir>/__mocks__/axios.mock.js",
+		"rx": "<rootDir>/__mocks__/rx.mock.js"
+	}
 }

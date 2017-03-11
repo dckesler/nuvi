@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStream } from 'src/activities.resource.js';
+import { activitiesStream } from 'src/activities.resource.js';
 import { css, StyleSheet } from 'aphrodite';
 import { texts } from 'styles';
 import { chunk } from 'lodash';
@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
 		this.state = {};
 	}
 	componentWillMount() {
-		this.activityStream = getStream('activities').subscribe(activities => {
+		this.activityStream = activitiesStream().subscribe(activities => {
 			this.setState({
 				chunks: chunk(activities, Math.ceil(activities.length / 3))
 			})
@@ -23,7 +23,7 @@ export default class Dashboard extends React.Component {
 	}
 	render() {
 		return (
-			<div className={`${css()}`}>
+			<div>
 				<div className={`${css(styles.activities)}`}>
 					{!this.state.chunks
 						? <div style={texts.subheader}>Loading...</div>

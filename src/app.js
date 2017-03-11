@@ -9,7 +9,6 @@ import Dashboard from './dashboard/dashboard.component.js';
 import Daily from './daily/daily.component.js';
 import NotFound from './not-found.component.js';
 
-activitiesStream();
 export default class App extends React.Component {
 	render() {
 		return (

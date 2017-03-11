@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, StyleSheet } from 'aphrodite';
-import { getStream } from 'src/activities.resource.js';
+import { activitiesStream } from 'src/activities.resource.js';
 import { texts } from 'styles';
 import { map } from 'lodash';
 
@@ -12,7 +12,7 @@ export default class Daily extends React.Component {
 		this.state = {};
 	}
 	componentWillMount() {
-		this.activityStream = getStream('activities')
+		this.activityStream = activitiesStream()
 			.filter(({activity_date}) => activity_date === this.props.day)
 			.map(activities => {
 				return activities.reduce(toProviders, {});
@@ -45,11 +45,11 @@ export default class Daily extends React.Component {
 	}
 }
 
-function toProviders(total, curr) {
+export function toProviders(total, curr) {
 	const provider = total[curr.provider] || {};
-	provider.like = curr.activity_likes + (provider.likes || 0);
-	provider.share = curr.activity_shares + (provider.shares || 0);
-	provider.comment = curr.activity_comments + (provider.comments || 0);
+	provider.like = curr.activity_likes + (provider.like || 0);
+	provider.share = curr.activity_shares + (provider.share || 0);
+	provider.comment = curr.activity_comments + (provider.comment || 0);
 	provider.sentiment = curr.activity_sentiment + (provider.sentiment || 0);
 	return {...total, [curr.provider]: provider};
 }

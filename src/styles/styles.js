@@ -4,7 +4,7 @@ import * as texts from './text.styles.js';
 import { css, StyleSheet } from 'aphrodite';
 
 export default {
-	texts: {...texts},
+	texts,
 	boxes,
 	colors,
 	toClass(style) {

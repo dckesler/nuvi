@@ -30,10 +30,9 @@ export default class Provider extends React.Component {
 							if (key === 'sentiment') return null;
 							return (
 								<div
-									className={`${css(styles.stats)}`}
+									className={`${css(styles.statBox)}`}
 									key={key}>
-									<div
-										className={`${css(styles.stat)}`}>{value}</div>
+									<div className={`${css(styles.stat)}`}>{value}</div>
 									<i className={`icon-${key} ${css(styles.statIcon)}`}/>
 								</div>
 							)
@@ -45,7 +44,7 @@ export default class Provider extends React.Component {
 	}
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
 	provider: {
 		...boxes.card,
 		marginBottom: '16px',
